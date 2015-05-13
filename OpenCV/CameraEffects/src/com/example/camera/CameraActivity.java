@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class CameraActivity extends ActionBarActivity {
-	
+	//Declaração das variaveis
 	Button btnTakePhoto;
 	ImageView imgTakenPhoto;
 	private static final int CAM_REQUEST = 1313;
