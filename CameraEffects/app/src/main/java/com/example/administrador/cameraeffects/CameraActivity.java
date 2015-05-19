@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 //import android.app.Activity;
 import android.view.WindowManager;
+//import org.opencv.R;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -87,7 +88,7 @@ public class CameraActivity extends ActionBarActivity implements CameraBridgeVie
             }
         }
     };
-    // Trecho de código importado do projeto do OpenCV
+    // Trecho de cï¿½digo importado do projeto do OpenCV
 
     Button btnTakePhoto;
     ImageView imgTakenPhoto;
@@ -95,7 +96,7 @@ public class CameraActivity extends ActionBarActivity implements CameraBridgeVie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    /* Primeira versão do Código sem o OPENCV
+    /* Primeira versï¿½o do Cï¿½digo sem o OPENCV
        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
@@ -104,7 +105,7 @@ public class CameraActivity extends ActionBarActivity implements CameraBridgeVie
 
         btnTakePhoto.setOnClickListener(new btnTakePhotoClicker());*/
 
-        // versão importada do Código do OpenCV
+        // versao importada do Codigo do OpenCV
         Log.i(TAG, "called onCreate");
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
