@@ -4,6 +4,6 @@ Utilização do Android Studio e recursos do Opencv.
 
 Felipe Simone RA	
 Igor Diniz RA	
-Marcelo Blanes RA	
+Marcelo Blanes RA	20474886
 Natalia Oliveira RA 20470090	
-Reanato Costa RA
+Renato Costa RA 20467657
