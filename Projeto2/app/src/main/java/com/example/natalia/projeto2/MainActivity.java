@@ -43,26 +43,38 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
     Bitmap photoAtualizada5 = null;
     Bitmap photoAtualizada6 = null;
     Bitmap photoUltima = null;
-
+    MediaPlayer botao = null;
 
     Button btnTakePhoto;
     ImageView imgTakenPhoto;
-    Uri fileUri;
+    public Uri fUri = null;
     private static final int CAM_REQUEST = 1313;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        botao = MediaPlayer.create(this, R.raw.b);
+
+        photo = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+        photoAtualizada1 = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+        photoAtualizada2 = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+        photoAtualizada3 = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+        photoAtualizada4 = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+        photoAtualizada5 = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+        photoUltima = BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher);
+
+        imgTakenPhoto = (ImageView) findViewById(R.id.imageview1);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.filtro, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         btnTakePhoto = (Button) findViewById(R.id.button1);
-        imgTakenPhoto = (ImageView) findViewById(R.id.imageview1);
+
 
 
         btnTakePhoto.setOnClickListener(new btnTakePhotoClicker());
@@ -103,15 +115,16 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
+            botao.start();
             Intent cameraintent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraintent, CAM_REQUEST);
         }
 
     }
 
-    private void Foto (Uri photoUri) {
+    private void Foto (Uri pU) {
 
-        File imagem = new File(photoUri.getPath());
+        File imagem = new File(pU.getPath());
 
         if (imagem.exists()) {
             Drawable oldDrawable = imgTakenPhoto.getDrawable();
