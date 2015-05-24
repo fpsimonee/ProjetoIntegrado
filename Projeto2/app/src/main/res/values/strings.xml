@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Projeto2</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="take_photo">Para tirar foto</string>
+    <string name="Grupo">Nome dos integrantes</string>
+    <string name="Press_Button">Aperte o botao para tirar foto</string>
+    <string name="descript">imagem camera</string>
+
+    <string-array name="filtro">
+        <item>Sem filtro</item>
+        <item>Filtro 1</item>
+        <item>Filtro 2</item>
+        <item>Filtro 3</item>
+    </string-array>
+</resources>
