@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,8 +20,6 @@ import android.widget.Toast;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
-
-import java.io.File;
 
 import static org.opencv.android.Utils.bitmapToMat;
 import static org.opencv.android.Utils.matToBitmap;
@@ -47,8 +42,10 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 
     Button btnTakePhoto;
     ImageView imgTakenPhoto;
-    public Uri fUri = null;
+
     private static final int CAM_REQUEST = 1313;
+
+    //Adiciona codigo do botao spinner e do botao de tirar a foto
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +78,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 
 
     }
+
+    //captura a foto tirada, acessando dispositivo de camera do usuário
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
@@ -122,24 +121,10 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 
     }
 
-    private void Foto (Uri pU) {
 
-        File imagem = new File(pU.getPath());
 
-        if (imagem.exists()) {
-            Drawable oldDrawable = imgTakenPhoto.getDrawable();
-            if (oldDrawable != null) {
-                ((BitmapDrawable) oldDrawable).getBitmap().recycle();
-            }
 
-            Bitmap bitmap = BitmapFactory.decodeFile(imagem
-                    .getAbsolutePath());
-            BitmapDrawable drawable = new BitmapDrawable(this.getResources(),
-                    bitmap);
-            imgTakenPhoto.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            imgTakenPhoto.setImageDrawable(drawable);
-        }
-    }
+    //Codigo do botao que mostra o nome dos integrantes do grupo
     public void verNomes(View view){
 
         final MediaPlayer verGrupo = MediaPlayer.create(this, R.raw.b);
@@ -148,12 +133,13 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
 
         Toast.makeText(this, "Felipe Simone 20721439\nMarcelo Blanes 20474886\nNatalia Oliveira 20470090\nRenato Costa 20467657", Toast.LENGTH_LONG).show();
     }
-
+    // Adiciona os filtros nos itens selecionados no botao spinner
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
         String i = parent.getItemAtPosition(pos).toString();
 
         switch(i){
+            //filtro Tons de cinza
             case "Filtro 1":
                 Mat g = new Mat();
                 Mat h = new Mat();
@@ -164,7 +150,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
                 photoUltima = photoAtualizada1;
 
                 break;
-
+            //Filtro Laplaciano
             case "Filtro 2":
                 Mat k = new Mat();
                 bitmapToMat(photoAtualizada2, k);
@@ -176,7 +162,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
                 matToBitmap(m, photoAtualizada2);
                 imgTakenPhoto.setImageBitmap(photoAtualizada2);
                 photoUltima = photoAtualizada2;
-
+            //Filtro de Contraste
             case "Filtro 3":
                 Mat c = new Mat();
                 Mat d = new Mat();
@@ -187,7 +173,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
                 imgTakenPhoto.setImageBitmap(photoAtualizada3);
                 photoUltima = photoAtualizada3;
                 break;
-
+            //Filtro de Contraste
             case "Filtro 4":
 
                 Mat e = new Mat();
@@ -201,7 +187,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener {
                 imgTakenPhoto.setImageBitmap(photoAtualizada4);
                 photoUltima = photoAtualizada4;
                 break;
-
+            //Detectar Bordas
             case "Filtro 5":
 
                 Mat a = new Mat();
