@@ -8,9 +8,12 @@
     <string name="descript">imagem camera</string>
 
     <string-array name="filtro">
-        <item>Sem filtro</item>
+        <item>Escolher Filtro</item>
+        <item>Foto sem Filtros!</item>
         <item>Filtro 1</item>
         <item>Filtro 2</item>
         <item>Filtro 3</item>
+        <item>Filtro 4</item>
+        <item>Filtro 5</item>
     </string-array>
 </resources>
